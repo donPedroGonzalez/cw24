@@ -8,9 +8,9 @@ function onPageLoad()
     reloadButton.addEventListener("click", clearForm);
 
     var exerciceBody = document.getElementById("exercice-wrapper");
-    questionsToFind = [ "Znajdź pytania", "Vous parlez quelles langues", "Vous parlez allemand", "Vous avez quels animaux", "Quel est votre métier", "Vous avez combien d'enfants", "Quelle est votre profession", "Vous avez quel âge", "Vous êtes de quelle nationalité", "Vous vous appelez comment", "Vous faites quoi dans la vie" ];
+    questionsToFind = [ "Znajdź pytania", "Vous parlez quelles langues | Quelles langues parlez-vous", "Vous parlez allemand | Parlez-vous allemand", "Vous avez quels animaux | Vous avez combien d'animaux | Combien d'animaux avez-vous | Quels animaux avez-vous", "Quel est votre métier", "Vous avez combien d'enfants | Combien d'enfants avez-vous | Vous avez des enfants", "Quelle est votre profession", "Vous avez quel âge", "Vous êtes de quelle nationalité | Quelle est votre nationalité", "Vous vous appelez comment | Comment vous vous appelez | Comment vous appelez-vous", "Vous faites quoi dans la vie" ];
     answersProvided = [ "Używaj pytań na *Pan/Pani* (vous)", "Je parle anglais et polonais.", "Je ne parle pas allemand.", "J'ai deux chats", "Je suis médecin.", "J'ai deux enfants", "Je suis médecin.", "J'ai 53 ans.", "Je suis polonais.", "Je m'appelle Marcin.", "Je suis médecin." ];
-    hints = [ "Questions de base", "angielski i polski", "Nie mówię po niemiecku", "Mam dwa koty", "lekarz", "2", "lekarz", "53", "Polak", "Marcin", "lekarz" ];
+    hints = [ "Questions de base", "angielski i polski", "Nie mówię po niemiecku", "Mam dwa koty", "lekarz  / métier", "2", "lekarz / profession", "53", "Polak", "Marcin", "lekarz" ];
 
 
     var myForm = document.createElement("form");
@@ -151,7 +151,7 @@ function onPageLoad()
             {
                 console.log("itemToCheck JSON:", JSON.stringify(itemToCheck));
                 console.log("answer JSON:", JSON.stringify(answers[k]));
-                if (itemToCheck.trim() !== answers[k].trim())
+                if (itemToCheck.replace(/[.!?]/g, "").trim() !== answers[k].replace(/[.!?]/g, "").trim())
                 {            
                     answerBad = true;
                     console.log("answer is bad")
